@@ -1,4 +1,4 @@
-package br.com.SistemaHotelaria.errors;
+package br.com.sistemahotelaria.errors;
 
 import java.util.Scanner;
 
