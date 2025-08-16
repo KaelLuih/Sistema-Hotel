@@ -1,14 +1,23 @@
 package br.com.SistemaHotelaria.errors;
 
+import java.util.Scanner;
+
 public class TratamentoDeErros {
+    Scanner input = new Scanner(System.in);
 
-    int Escolha;
+    public int Erros() {
+        int Escolha;
+        while (true) {
+            System.out.println("Digite a sua opção:");
+            String opcaoEscolhida = input.nextLine();
 
+            try{
+                Escolha = Integer.parseInt(opcaoEscolhida);
+                return Escolha;
+            }catch (NumberFormatException erro){
+                System.out.println("Erro:" + erro);
+            }
+        }
 
-
-
-
-    System.out.println("");
-
-
+    }
 }
