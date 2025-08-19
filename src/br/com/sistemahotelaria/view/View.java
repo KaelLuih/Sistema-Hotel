@@ -1,5 +1,9 @@
 package br.com.sistemahotelaria.view;
 
+import br.com.sistemahotelaria.model.Hospede;
+import br.com.sistemahotelaria.model.Quarto;
+import br.com.sistemahotelaria.model.Reserva;
+
 import java.util.Scanner;
 
 public class View {
@@ -55,6 +59,41 @@ public class View {
         System.out.println("| 3. Pesquisar reserva         |");
         System.out.println("| 4. Cancelar reserva          |");
         System.out.println("|______________________________|");
+        System.out.print("> ");
+        return sc.nextLine();
+    }
+
+    public void semCadastro(){
+        System.out.println("\nNenhum cadastro disponivel.");
+    }
+
+    public void nEncontrado(){
+        System.out.println("\nNenhum registro encontrado.");
+    }
+
+    public void encontrado(){
+        System.out.println("\nEnter para voltar ao menu");
+        sc.nextLine();
+    }
+
+    public void listarHospede(Hospede h){
+        System.out.println("\n" + h);
+    }
+
+    public void listarQuarto(Quarto q){
+        System.out.println("\n" + q);
+    }
+
+    public void listarReserva(Reserva r){
+        System.out.println("\n" + r);
+    }
+
+    public String pesquisaHospede(){
+        System.out.println("\n ____________________________");
+        System.out.println("| PESQUISAR HÓSPEDE POR NOME |");
+        System.out.println("|----------------------------|");
+        System.out.println("| Insira o nome do hóspede:  |");
+        System.out.println("|____________________________|");
         System.out.print("> ");
         return sc.nextLine();
     }
