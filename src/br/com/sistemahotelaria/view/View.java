@@ -52,7 +52,8 @@ public class View {
         System.out.println("|------------------------------|");
         System.out.println("| 1. Cadastrar reserva         |");
         System.out.println("| 2. Listar todas reserva      |");
-        System.out.println("| 3. Pesquisar resrva          |");
+        System.out.println("| 3. Pesquisar reserva         |");
+        System.out.println("| 4. Cancelar reserva          |");
         System.out.println("|______________________________|");
         System.out.print("> ");
         return sc.nextLine();
