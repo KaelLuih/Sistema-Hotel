@@ -43,5 +43,5 @@ public class Reserva {
     }
     public void setDataSaida(Date dataSaida) {
         this.dataSaida = dataSaida;
-    
+    }
 }
