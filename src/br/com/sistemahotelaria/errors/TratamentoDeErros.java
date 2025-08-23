@@ -3,9 +3,9 @@ package br.com.sistemahotelaria.errors;
 import java.util.Scanner;
 
 public class TratamentoDeErros {
-    Scanner input = new Scanner(System.in);
+    static Scanner input = new Scanner(System.in);
 
-    public int Erros() {
+    public static int Erros() {
         int Escolha;
         while (true) {
             System.out.println("Digite a sua opção:");

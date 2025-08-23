@@ -1,5 +1,6 @@
 package br.com.sistemahotelaria.view;
 
+import br.com.sistemahotelaria.errors.TratamentoDeErros;
 import br.com.sistemahotelaria.model.Hospede;
 import br.com.sistemahotelaria.model.Quarto;
 import br.com.sistemahotelaria.model.Reserva;
@@ -13,7 +14,7 @@ public class View {
         sc = new Scanner(System.in);
     }
 
-    public static String menu(){
+    public static int menu(){
         System.out.println("\n ______________________________");
         System.out.println("|             HOTEL            |");
         System.out.println("|------------------------------|");
@@ -21,11 +22,10 @@ public class View {
         System.out.println("| 2. Gerenciar quartos         |");
         System.out.println("| 3. Gerenciar reservas        |");
         System.out.println("|______________________________|");
-        System.out.print("> ");
-        return sc.nextLine();
+        return TratamentoDeErros.Erros();
     }
 
-    public String menuHospede(){
+    public int menuHospede(){
         System.out.println("\n ______________________________");
         System.out.println("|           HÓSPEDES           |");
         System.out.println("|------------------------------|");
@@ -34,11 +34,10 @@ public class View {
         System.out.println("| 3. Pesquisar hóspede         |");
         System.out.println("| 4. Editar dados              |");
         System.out.println("|______________________________|");
-        System.out.print("> ");
-        return sc.nextLine();
+        return TratamentoDeErros.Erros();
     }
 
-    public String menuQuarto(){
+    public int menuQuarto(){
         System.out.println("\n ______________________________");
         System.out.println("|            QUARTOS           |");
         System.out.println("|------------------------------|");
@@ -46,21 +45,18 @@ public class View {
         System.out.println("| 2. Listar todos os quartos   |");
         System.out.println("| 3. Pesquisar quarto          |");
         System.out.println("|______________________________|");
-        System.out.print("> ");
-        return sc.nextLine();
+        return TratamentoDeErros.Erros();
     }
 
-    public String menuReserva(){
+    public int menuReserva(){
         System.out.println("\n ______________________________");
         System.out.println("|           RESERVAS           |");
         System.out.println("|------------------------------|");
         System.out.println("| 1. Cadastrar reserva         |");
         System.out.println("| 2. Listar todas reserva      |");
-        System.out.println("| 3. Pesquisar reserva         |");
-        System.out.println("| 4. Cancelar reserva          |");
+        System.out.println("| 3. Pesquisar resrva          |");
         System.out.println("|______________________________|");
-        System.out.print("> ");
-        return sc.nextLine();
+        return TratamentoDeErros.Erros();
     }
 
     public void semCadastro(){

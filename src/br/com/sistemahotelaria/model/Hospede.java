@@ -12,6 +12,12 @@ public class Hospede {
         this.telefone = telefone;
     }
 
+    public Hospede() {
+        this.nome="";
+        this.documento="";
+        this.telefone="";
+    }
+
     @Override
     public String toString(){
         return "\nNome: " + nome + "\nDocumento: " + documento + "\nTelefone: " + telefone;
@@ -21,23 +27,29 @@ public class Hospede {
         return nome;
     }
 
-    public void setNome(String nome) {
+    public boolean setNome(String nome) {
+        if (nome==null || nome.isBlank()){
+                return false;
+        }
         this.nome = nome;
+        return true;
     }
 
     public String getDocumento() {
         return documento;
     }
 
-    public void setDocumento(String documento) {
+    public boolean setDocumento(String documento) {
         this.documento = documento;
+        return true;
     }
 
     public String getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(String telefone) {
+    public boolean setTelefone(String telefone) {
         this.telefone = telefone;
+    return true;
     }
 }

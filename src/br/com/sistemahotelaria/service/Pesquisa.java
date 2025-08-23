@@ -5,12 +5,11 @@ import br.com.sistemahotelaria.model.Quarto;
 import br.com.sistemahotelaria.model.Reserva;
 import br.com.sistemahotelaria.view.View;
 
-import java.util.List;
 import java.util.ArrayList;
 
 public class Pesquisa {
-    String entrada;
-    public void pesquisa(ArrayList list, View view, Object object){
+    static String entrada;
+    public static void pesquisa(ArrayList list, View view, Object object){
         entrada = view.pesquisaHospede();
         boolean encontrado = false;
 
