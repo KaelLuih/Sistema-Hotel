@@ -1,5 +1,7 @@
 package br.com.sistemahotelaria.errors;
 
+import br.com.sistemahotelaria.view.View;
+
 import java.util.Scanner;
 
 public class TratamentoDeErros {
@@ -8,14 +10,14 @@ public class TratamentoDeErros {
     public static int Erros() {
         int Escolha;
         while (true) {
-            System.out.println("Digite a sua opção:");
+            View.opcao();
             String opcaoEscolhida = input.nextLine();
 
             try{
                 Escolha = Integer.parseInt(opcaoEscolhida);
                 return Escolha;
             }catch (NumberFormatException erro){
-                System.out.println("Erro:" + erro);
+                View.erro();
             }
         }
 

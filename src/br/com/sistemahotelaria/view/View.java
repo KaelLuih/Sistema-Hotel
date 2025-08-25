@@ -21,6 +21,8 @@ public class View {
         System.out.println("| 1. Gerenciar hóspedes        |");
         System.out.println("| 2. Gerenciar quartos         |");
         System.out.println("| 3. Gerenciar reservas        |");
+        System.out.println("|------------------------------|");
+        System.out.println("| 0. Sair do sistema           |");
         System.out.println("|______________________________|");
         return TratamentoDeErros.Erros();
     }
@@ -59,6 +61,30 @@ public class View {
         return TratamentoDeErros.Erros();
     }
 
+    public void cabecalho(String texto){
+        System.out.println("\n-- " + texto + " --");
+    }
+
+    public static void opcao(){
+        System.out.print("> ");
+    }
+
+    public static void erro(){
+        System.out.print("\nErro: ");
+    }
+
+    public static void nome(){
+        System.out.print("\nNome: ");
+    }
+
+    public static void documentos(){
+        System.out.print("\nDocumentos: ");
+    }
+
+    public static void telefone(){
+        System.out.print("\nTelefone: ");
+    }
+
     public void semCadastro(){
         System.out.println("\nNenhum cadastro disponivel.");
     }
@@ -90,6 +116,26 @@ public class View {
         System.out.println("|----------------------------|");
         System.out.println("| Insira o nome do hóspede:  |");
         System.out.println("|____________________________|");
+        System.out.print("> ");
+        return sc.nextLine();
+    }
+
+    public String pesquisaQuarto(){
+        System.out.println("\n ____________________________");
+        System.out.println("| PESQUISAR QUARTO POR TIPO  |");
+        System.out.println("|----------------------------|");
+        System.out.println("| Insira o tipo do quarto:   |");
+        System.out.println("|____________________________|");
+        System.out.print("> ");
+        return sc.nextLine();
+    }
+
+    public String pesquisaReserva(){
+        System.out.println("\n ________________________________");
+        System.out.println("| PESQUISAR RESERVA POR HÓSPEDE  |");
+        System.out.println("|--------------------------------|");
+        System.out.println("| Insira o nome do hóspede   :   |");
+        System.out.println("|________________________________|");
         System.out.print("> ");
         return sc.nextLine();
     }

@@ -1,6 +1,8 @@
 package br.com.sistemahotelaria.service;
 
 import br.com.sistemahotelaria.model.Hospede;
+import br.com.sistemahotelaria.view.View;
+
 import java.util.Scanner;
 
 public class CadastroHospede {
@@ -10,15 +12,15 @@ public class CadastroHospede {
         Hospede hosp = new Hospede();
 
         do {
-            System.out.println("Insira o nome:");
+            View.nome();
         } while (!hosp.setNome(input.nextLine()));
 
         do {
-            System.out.println("Insira os documentos:");
+            View.documentos();
         } while (!hosp.setDocumento(input.nextLine()));
 
         do {
-            System.out.println("Insira o telefone:");
+            View.telefone();
         } while (!hosp.setTelefone(input.nextLine()));
 
         return hosp;

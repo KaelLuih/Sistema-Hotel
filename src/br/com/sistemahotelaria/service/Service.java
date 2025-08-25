@@ -12,7 +12,7 @@ import java.util.List;
 
 public class Service {
 
-    private static List<Hospede> usuarioList = new ArrayList<>();
+    private static List<Usuario> usuarioList = new ArrayList<>();
     private static List<Quarto> quartoList = new ArrayList<>();
     private static List<Reserva> reservaList = new ArrayList<>();
 
@@ -27,7 +27,16 @@ public class Service {
                         usuarioList.add(hosp);
                     }
                     case 2 -> {
-
+                        if(quartoList.isEmpty()){
+                            view.semCadastro();
+                        } else {
+                            view.cabecalho("TODOS OS HÓSPEDES CADASTRADOS");
+                            for(Usuario hosp : usuarioList){
+                                if(hosp instanceof  Hospede) {
+                                    view.listarHospede((Hospede) hosp);
+                                }
+                            }
+                        }
                     }
                     case 3 -> {
                         Hospede hosp = null;
@@ -45,7 +54,14 @@ public class Service {
 
                     }
                     case 2->{
-
+                        view.cabecalho("TODOS OS QUARTOS CADASTRADOS");
+                        if(quartoList.isEmpty()){
+                            view.semCadastro();
+                        } else {
+                            for(Quarto quarto : quartoList){
+                                view.listarQuarto(quarto);
+                            }
+                        }
                     }
                     case 3->{
                         Quarto quarto = null;
@@ -60,7 +76,14 @@ public class Service {
 
                     }
                     case 2->{
-
+                        view.cabecalho("TODAS AS RESERVAS CADASTRADAS");
+                        if(reservaList.isEmpty()){
+                            view.semCadastro();
+                        } else {
+                            for(Reserva reserva : reservaList){
+                                view.listarReserva(reserva);
+                            }
+                        }
                     }
                     case 3->{
                         Reserva reserva = null;
