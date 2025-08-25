@@ -1,6 +1,5 @@
 package br.com.sistemahotelaria.service;
 
-import br.com.sistemahotelaria.errors.TratamentoDeErros;
 import br.com.sistemahotelaria.model.Hospede;
 import br.com.sistemahotelaria.model.Quarto;
 import br.com.sistemahotelaria.model.Reserva;
@@ -23,7 +22,7 @@ public class Service {
                 escolha = view.menuHospede();
                 switch (escolha) {
                     case 1 -> {
-                        Hospede hosp = CadastroHospede.cadastrar();
+                        Hospede hosp = Cadastro.cadastroHospede();
                         usuarioList.add(hosp);
                     }
                     case 2 -> {
@@ -93,6 +92,7 @@ public class Service {
             }
             case 0 -> {
                 continuar = false;
+                view.encerrar();
             }
         }
         return  continuar;

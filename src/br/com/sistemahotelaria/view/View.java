@@ -73,16 +73,8 @@ public class View {
         System.out.print("\nErro: ");
     }
 
-    public static void nome(){
-        System.out.print("\nNome: ");
-    }
-
-    public static void documentos(){
-        System.out.print("\nDocumentos: ");
-    }
-
-    public static void telefone(){
-        System.out.print("\nTelefone: ");
+    public static void textoCadastro(String texto){
+        System.out.print("\n" + texto + ": ");
     }
 
     public void semCadastro(){
@@ -138,5 +130,9 @@ public class View {
         System.out.println("|________________________________|");
         System.out.print("> ");
         return sc.nextLine();
+    }
+
+    public void encerrar(){
+        System.out.println("Sistema encerrado.");
     }
 }
