@@ -48,10 +48,13 @@ public class Cadastro {
 
     public static Reserva CadastroDeReserva(){
         Reserva res = new Reserva();
-
+        Hospede hosp = new Hospede();
+        Quarto quar = new Quarto();
         do {
-            View.textoCadastro("Quarto");
-        }while(!res.setQuarto(input.nextLine()));
+            View.textoCadastro("Numero do Quarto");
+            quar.setNumero(input.nextLine());
+        }while(quar.getNumero() == null || quar.getNumero().isEmpty());
+
         do {
             View.textoCadastro("Ativo t/f");
         }while (!res.setAtiva(input.nextLine()));
@@ -65,8 +68,9 @@ public class Cadastro {
         }while(!res.setDataSaida(input.nextLine()));
         do {
             View.textoCadastro("Hospede");
-        }while(!res.setHospede(input.nextLine()));
-
+            hosp.setNome(input.nextLine());
+        }while(hosp.getNome() == null || hosp.getNome().isEmpty());
+            res.setHospede(hosp);
 
 
         return res;

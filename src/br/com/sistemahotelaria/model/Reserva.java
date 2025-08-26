@@ -1,8 +1,8 @@
 package br.com.sistemahotelaria.model;
 
 public class Reserva {
-    private String hospede;
-    private String quarto;
+    private Hospede hospede;
+    private Quarto quarto;
     private String dataEntrada;
     private String dataSaida;
     private String ativa;
@@ -20,10 +20,10 @@ public class Reserva {
         return "\nHospede: " + hospede + "\nQuarto: " + quarto + "\nData de check-in: " + dataEntrada + "\nData de check-out: " + dataSaida + "\nStatus: " + ativa;
     }
 
-    public String getHospede() {
+    public Hospede getHospede() {
         return hospede;
     }
-    public boolean setHospede(String hospede) {
+    public boolean setHospede(Hospede hospede) {
         this.hospede = hospede;
         return true;
     }
