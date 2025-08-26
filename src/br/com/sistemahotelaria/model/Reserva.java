@@ -1,15 +1,13 @@
 package br.com.sistemahotelaria.model;
 
-import java.util.Date;
-
 public class Reserva {
-    private Hospede hospede;
-    private Quarto quarto;
-    private Date dataEntrada;
-    private Date dataSaida;
-    private boolean ativa;
+    private String hospede;
+    private String quarto;
+    private String dataEntrada;
+    private String dataSaida;
+    private String ativa;
 
-    public Reserva(Hospede hospede, Quarto quarto, Date dataEntrada, Date dataSaida, boolean ativa){
+    public Reserva(){
         this.hospede = hospede;
         this.quarto = quarto;
         this.dataEntrada = dataEntrada;
@@ -22,32 +20,39 @@ public class Reserva {
         return "\nHospede: " + hospede + "\nQuarto: " + quarto + "\nData de check-in: " + dataEntrada + "\nData de check-out: " + dataSaida + "\nStatus: " + ativa;
     }
 
-    public Hospede getHospede() {
+    public String getHospede() {
         return hospede;
     }
-    public void setHospede(Hospede hospede) {
+    public boolean setHospede(String hospede) {
         this.hospede = hospede;
+        return true;
     }
 
-    public Quarto getQuarto() {
+    public String getQuarto() {
         return quarto;
     }
-    public void setQuarto(Quarto quarto) {
+    public boolean setQuarto(String quarto) {
         this.quarto = quarto;
+        return true;
     }
 
-    public Date getDataEntrada() {
+    public String getDataEntrada() {
         return dataEntrada;
     }
-    public void setDataEntrada(Date dataEntrada) {
+    public boolean setDataEntrada(String dataEntrada) {
         this.dataEntrada = dataEntrada;
+        return true;
     }
 
-    public Date getDataSaida() {
+    public String getDataSaida() {
         return dataSaida;
     }
-    public void setDataSaida(Date dataSaida) { this.dataSaida = dataSaida; }
+    public boolean setDataSaida(String dataSaida) { this.dataSaida = dataSaida;
+    return true;
+    }
 
-    public boolean getAtiva(){ return ativa; }
-    public void setAtiva(boolean ativa){ this.ativa = ativa; }
+    public String getAtiva(){ return ativa; }
+    public boolean setAtiva(String ativa){ this.ativa = ativa;
+    return true;
+    }
 }

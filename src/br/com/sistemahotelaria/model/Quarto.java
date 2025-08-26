@@ -1,12 +1,12 @@
 package br.com.sistemahotelaria.model;
 
 public class Quarto {
-    private int numero;
+    private String numero;
     private String tipo;
-    private double preco;
+    private String preco;
 
 
-    public Quarto(int numero, String tipo, double preco){
+    public Quarto(){
         this.numero = numero;
         this.tipo = tipo;
         this.preco = preco;
@@ -17,24 +17,27 @@ public class Quarto {
         return "\nNúmero: " + numero + "\nTipo: " + tipo + "\nPreço: " + preco;
     }
 
-    public int getNumero() {
+    public String getNumero() {
         return numero;
     }
-    public void setNumero(int numero) {
+    public boolean setNumero(String numero) {
         this.numero = numero;
+        return true;
     }
 
     public String getTipo() {
         return tipo;
     }
-    public void setTipo(String tipo) {
+    public boolean setTipo(String tipo) {
         this.tipo = tipo;
+    return true;
     }
 
-    public double getPreco() {
+    public String getPreco() {
         return preco;
     }
-    public void setPreco(double preco) {
+    public boolean setPreco(String preco) {
         this.preco = preco;
+        return true;
     }
 }
