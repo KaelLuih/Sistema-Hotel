@@ -17,104 +17,117 @@ public class Service {
 
     public static boolean gerenciar(int escolha, View view) {
         boolean continuar = true;
+
         switch (escolha) {
-            case 1 -> {
+            case 1 -> { // HÓSPEDE
                 escolha = view.menuHospede();
                 switch (escolha) {
-                    case 1 -> {
+                    case 1 -> { // Cadastrar
                         Hospede hosp = Cadastro.cadastroHospede();
                         usuarioList.add(hosp);
                     }
-                    case 2 -> {
-                        if(usuarioList.isEmpty()){
-                            view.semCadastro();
-                        } else {
+                    case 2 -> { // Listar
+                        if (usuarioList.isEmpty()) view.semCadastro();
+                        else {
                             view.cabecalho("TODOS OS HÓSPEDES CADASTRADOS");
-                            for(Usuario hosp : usuarioList){
-                                if(hosp instanceof  Hospede) {
-                                    view.listarHospede((Hospede) hosp);
-                                }
+                            for (Usuario hosp : usuarioList) {
+                                if (hosp instanceof Hospede) view.listarHospede((Hospede) hosp);
                             }
                         }
                     }
-                    case 3 -> {
-                        Hospede hosp = null;
-                        Pesquisa.pesquisa((ArrayList) usuarioList, view, hosp);
+                    case 3 -> { // Pesquisar
+                        view.cabecalho("PESQUISAR HÓSPEDE");
+                        String nome = view.lerEntrada("Digite o nome do hóspede: ");
+                        for (Usuario u : usuarioList) {
+                            if (u instanceof Hospede h && h.getNome().equalsIgnoreCase(nome)) {
+                                view.listarHospede(h);
+                                break;
+                            }
+                        }
                     }
-                    case 4 -> {
-
+                    case 4 -> { // Editar
+                        Edicao.editarHospede(usuarioList, view);
                     }
                 }
             }
-            case 2 -> {
+
+            case 2 -> { // QUARTO
                 escolha = view.menuQuarto();
-                switch (escolha){
-                    case 1->{
+                switch (escolha) {
+                    case 1 -> { // Cadastrar
                         Quarto quarto = Cadastro.CadastroQuarto();
                         quartoList.add(quarto);
                     }
-                    case 2->{
-                        view.cabecalho("TODOS OS QUARTOS CADASTRADOS");
-                        if(quartoList.isEmpty()){
-                            view.semCadastro();
-                        } else {
-                            for(Quarto quarto : quartoList){
-                                view.listarQuarto(quarto);
+                    case 2 -> { // Listar
+                        if (quartoList.isEmpty()) view.semCadastro();
+                        else {
+                            view.cabecalho("TODOS OS QUARTOS CADASTRADOS");
+                            for (Quarto q : quartoList) view.listarQuarto(q);
+                        }
+                    }
+                    case 3 -> { // Pesquisar
+                        view.cabecalho("PESQUISAR QUARTO");
+                        String numero = view.lerEntrada("Digite o número do quarto: ");
+                        for (Quarto q : quartoList) {
+                            if (q.getNumero().equalsIgnoreCase(numero)) {
+                                view.listarQuarto(q);
+                                break;
                             }
                         }
                     }
-                    case 3->{
-                        Quarto quarto = null;
-                        Pesquisa.pesquisa((ArrayList) quartoList, view, quarto);
+                    case 4 -> { // Editar
+                        Edicao.editarQuarto(quartoList, view);
                     }
                 }
             }
-            case 3 -> {
+
+            case 3 -> { // RESERVA
                 escolha = view.menuReserva();
-                switch (escolha){
-                    case 1->{
+                switch (escolha) {
+                    case 1 -> { // Cadastrar
                         Reserva reserva = Cadastro.CadastroDeReserva();
                         reservaList.add(reserva);
                     }
-                    case 2->{
-                        view.cabecalho("TODAS AS RESERVAS CADASTRADAS");
-                        if(reservaList.isEmpty()){
-                            view.semCadastro();
-                        } else {
-                            for(Reserva reserva : reservaList){
-                                view.listarReserva(reserva);
+                    case 2 -> { // Listar
+                        if (reservaList.isEmpty()) view.semCadastro();
+                        else {
+                            view.cabecalho("TODAS AS RESERVAS CADASTRADAS");
+                            for (Reserva r : reservaList) view.listarReserva(r);
+                        }
+                    }
+                    case 3 -> { // Pesquisar
+                        view.cabecalho("PESQUISAR RESERVA");
+                        String nome = view.lerEntrada("Digite o nome do hóspede da reserva: ");
+                        for (Reserva r : reservaList) {
+                            if (r.getHospede() != null && r.getHospede().getNome().equalsIgnoreCase(nome)) {
+                                view.listarReserva(r);
+                                break;
                             }
                         }
                     }
-                    case 3->{
-                        Reserva reserva = null;
-                        Pesquisa.pesquisa((ArrayList) reservaList, view, reserva);
-                    }
-                    case 4->{
-                        Reserva reserva = null;
-                        escolha = view.cancelarReserva();
-                        switch (escolha){
-                            case 1->{
-                                String nome = Pesquisa.pesquisa((ArrayList) reservaList, view, reserva);
-                                for(Reserva r : reservaList){
-                                    if(r.getHospede() != null &&
-                                    r.getHospede().getNome().equalsIgnoreCase(nome)){
-                                        r.setAtiva(false);
-                                        view.reservaCancelada();
-                                        break;
-                                    }
-                                }
+                    case 4 -> { // Cancelar
+                        String nome = view.lerEntrada("Digite o nome do hóspede da reserva: ");
+                        for (Reserva r : reservaList) {
+                            if (r.getHospede() != null && r.getHospede().getNome().equalsIgnoreCase(nome)) {
+                                r.setAtiva(false);
+                                view.reservaCancelada();
+                                break;
                             }
                         }
+                    }
+                    case 5 -> { // Editar
+                        Edicao.editarReserva(reservaList, view);
                     }
                 }
             }
-            case 0 -> {
+
+            case 0 -> { // Sair
                 continuar = false;
                 view.encerrar();
             }
         }
-        return  continuar;
+
+        return continuar;
     }
 
     public static List<Usuario> getUsuarioList() {
@@ -124,4 +137,6 @@ public class Service {
     public static List<Quarto> getQuartoList() {
         return quartoList;
     }
+
+    public static List<Reserva> getReservaList() { return reservaList; }
 }

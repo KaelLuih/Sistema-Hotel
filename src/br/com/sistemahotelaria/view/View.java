@@ -46,6 +46,7 @@ public class View {
         System.out.println("| 1. Cadastrar quarto          |");
         System.out.println("| 2. Listar todos os quartos   |");
         System.out.println("| 3. Pesquisar quarto          |");
+        System.out.println("| 4. Editar dados              |");
         System.out.println("|______________________________|");
         return TratamentoDeErros.Erros();
     }
@@ -58,6 +59,7 @@ public class View {
         System.out.println("| 2. Listar todas reserva      |");
         System.out.println("| 3. Pesquisar reserva         |");
         System.out.println("| 4. Cancelar reserva          |");
+        System.out.println("| 5. Editar dados              |");
         System.out.println("|______________________________|");
         return TratamentoDeErros.Erros();
     }
@@ -151,4 +153,16 @@ public class View {
     public void encerrar(){
         System.out.println("Sistema encerrado.");
     }
+
+public String lerEntrada(String mensagem) {
+    System.out.print(mensagem);
+    java.util.Scanner sc = new java.util.Scanner(System.in);
+    return sc.nextLine();
+}
+
+public void editadoComSucesso() {
+    System.out.println("✔ Registro editado com sucesso!");
+}
+
+
 }
