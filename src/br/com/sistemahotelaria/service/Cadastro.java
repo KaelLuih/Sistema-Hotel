@@ -1,10 +1,14 @@
 package br.com.sistemahotelaria.service;
 
+import br.com.sistemahotelaria.errors.TratamentoDeErros;
 import br.com.sistemahotelaria.model.Hospede;
 import br.com.sistemahotelaria.model.Quarto;
 import br.com.sistemahotelaria.model.Reserva;
+import br.com.sistemahotelaria.model.Usuario;
 import br.com.sistemahotelaria.view.View;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Cadastro {
@@ -48,33 +52,54 @@ public class Cadastro {
 
     public static Reserva CadastroDeReserva(){
         Reserva res = new Reserva();
+        Quarto quarto = new Quarto();
         Hospede hosp = new Hospede();
-        Quarto quar = new Quarto();
-        do {
-            View.textoCadastro("Numero do Quarto");
-            quar.setNumero(input.nextLine());
-        }while(quar.getNumero() == null || quar.getNumero().isEmpty());
 
         do {
-            View.textoCadastro("Ativo t/f");
-        }while (!res.setAtiva(input.nextLine()));
+            View.textoCadastro("Numero do Quarto");
+            int numero = TratamentoDeErros.Erros();
+            List<Quarto> listQuarto = Service.getQuartoList();
+
+            for(Quarto q : listQuarto){
+                if(q.getNumero().equalsIgnoreCase(String.valueOf(numero))){
+                    quarto = q;
+                    break;
+                }
+            }
+            if(quarto == null){
+                View.semCadastro();
+            }
+        }while(quarto.getNumero() == null || quarto.getNumero().isEmpty());
+        res.setQuarto(quarto);
+
+        do {
+            View.textoCadastro("Ativo true/false");
+        }while (!res.setAtiva(Boolean.parseBoolean(input.nextLine())));
 
         do {
             View.textoCadastro("Data de Entrada");
-        }while (!res.setDataEntrada(input.nextLine()));
+        }while (!res.setDataEntrada(TratamentoDeErros.data()));
 
         do {
             View.textoCadastro("Data de Saida");
-        }while(!res.setDataSaida(input.nextLine()));
-        do {
-            View.textoCadastro("Hospede");
-            hosp.setNome(input.nextLine());
-        }while(hosp.getNome() == null || hosp.getNome().isEmpty());
-            res.setHospede(hosp);
+        }while(!res.setDataSaida(TratamentoDeErros.data()));
 
+        do {
+            View.textoCadastro("Nome do Hospede");
+            String nome = input.nextLine();
+            List<Usuario> listHospede = Service.getUsuarioList();
+
+            for(Usuario h : listHospede){
+                if(h instanceof Hospede){
+                    if(h.getNome().equalsIgnoreCase(nome)){
+                        hosp = (Hospede) h;
+                        break;
+                    }
+                }
+            }
+        }while(hosp.getNome() == null || hosp.getNome().isEmpty());
+        res.setHospede(hosp);
 
         return res;
-
     }
-
 }

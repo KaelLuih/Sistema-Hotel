@@ -26,7 +26,7 @@ public class Service {
                         usuarioList.add(hosp);
                     }
                     case 2 -> {
-                        if(quartoList.isEmpty()){
+                        if(usuarioList.isEmpty()){
                             view.semCadastro();
                         } else {
                             view.cabecalho("TODOS OS HÓSPEDES CADASTRADOS");
@@ -50,7 +50,8 @@ public class Service {
                 escolha = view.menuQuarto();
                 switch (escolha){
                     case 1->{
-
+                        Quarto quarto = Cadastro.CadastroQuarto();
+                        quartoList.add(quarto);
                     }
                     case 2->{
                         view.cabecalho("TODOS OS QUARTOS CADASTRADOS");
@@ -72,7 +73,8 @@ public class Service {
                 escolha = view.menuReserva();
                 switch (escolha){
                     case 1->{
-
+                        Reserva reserva = Cadastro.CadastroDeReserva();
+                        reservaList.add(reserva);
                     }
                     case 2->{
                         view.cabecalho("TODAS AS RESERVAS CADASTRADAS");
@@ -88,6 +90,23 @@ public class Service {
                         Reserva reserva = null;
                         Pesquisa.pesquisa((ArrayList) reservaList, view, reserva);
                     }
+                    case 4->{
+                        Reserva reserva = null;
+                        escolha = view.cancelarReserva();
+                        switch (escolha){
+                            case 1->{
+                                String nome = Pesquisa.pesquisa((ArrayList) reservaList, view, reserva);
+                                for(Reserva r : reservaList){
+                                    if(r.getHospede() != null &&
+                                    r.getHospede().getNome().equalsIgnoreCase(nome)){
+                                        r.setAtiva(false);
+                                        view.reservaCancelada();
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
             case 0 -> {
@@ -96,5 +115,13 @@ public class Service {
             }
         }
         return  continuar;
+    }
+
+    public static List<Usuario> getUsuarioList() {
+        return usuarioList;
+    }
+
+    public static List<Quarto> getQuartoList() {
+        return quartoList;
     }
 }

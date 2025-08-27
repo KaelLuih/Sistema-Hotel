@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class Pesquisa {
     static String entrada;
-    public static void pesquisa(ArrayList list, View view, Object object){
+    public static String pesquisa(ArrayList list, View view, Object object){
         boolean encontrado = false;
 
         if(list.isEmpty()){
@@ -34,7 +34,7 @@ public class Pesquisa {
                     entrada = view.pesquisaReserva();
                     if (((Reserva) obj).getHospede().getNome().equalsIgnoreCase(entrada)) {
                         view.listarReserva((Reserva) obj);
-                        break;
+                        return ((Reserva) obj).getHospede().getNome();
                     }
                 }
             }
@@ -44,5 +44,6 @@ public class Pesquisa {
                 view.encontrado();
             }
         }
+        return null;
     }
 }

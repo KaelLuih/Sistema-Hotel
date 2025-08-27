@@ -56,9 +56,25 @@ public class View {
         System.out.println("|------------------------------|");
         System.out.println("| 1. Cadastrar reserva         |");
         System.out.println("| 2. Listar todas reserva      |");
-        System.out.println("| 3. Pesquisar resrva          |");
+        System.out.println("| 3. Pesquisar reserva         |");
+        System.out.println("| 4. Cancelar reserva          |");
         System.out.println("|______________________________|");
         return TratamentoDeErros.Erros();
+    }
+
+    public int cancelarReserva(){
+        System.out.println(" ____________________________");
+        System.out.println("|      CANCELAR RESERVA      |");
+        System.out.println("|----------------------------|");
+        System.out.println("| Deseja cancelar a reserva? |");
+        System.out.println("| 1. Sim                     |");
+        System.out.println("| 2. Não                     |");
+        System.out.println("|____________________________|");
+        return TratamentoDeErros.Erros();
+    }
+
+    public void reservaCancelada(){
+        System.out.println("\nReserva cancelada com sucesso.");
     }
 
     public void cabecalho(String texto){
@@ -77,7 +93,7 @@ public class View {
         System.out.print("\n" + texto + ": ");
     }
 
-    public void semCadastro(){
+    public static void semCadastro(){
         System.out.println("\nNenhum cadastro disponivel.");
     }
 

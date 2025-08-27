@@ -1,18 +1,24 @@
 package br.com.sistemahotelaria.model;
 
+import java.time.LocalDate;
+
 public class Reserva {
     private Hospede hospede;
     private Quarto quarto;
-    private String dataEntrada;
-    private String dataSaida;
-    private String ativa;
+    private LocalDate dataEntrada;
+    private LocalDate dataSaida;
+    private boolean ativa;
 
-    public Reserva(){
+    public Reserva(Hospede hospede, Quarto quarto, LocalDate dataEntrada, LocalDate dataSaida, boolean ativa){
         this.hospede = hospede;
         this.quarto = quarto;
         this.dataEntrada = dataEntrada;
         this.dataSaida = dataSaida;
         this.ativa = ativa;
+    }
+
+    public Reserva() {
+
     }
 
     @Override
@@ -28,31 +34,34 @@ public class Reserva {
         return true;
     }
 
-    public String getQuarto() {
+    public Quarto getQuarto() {
         return quarto;
     }
-    public boolean setQuarto(String quarto) {
+    public boolean setQuarto(Quarto quarto) {
         this.quarto = quarto;
         return true;
     }
 
-    public String getDataEntrada() {
+    public LocalDate getDataEntrada() {
         return dataEntrada;
     }
-    public boolean setDataEntrada(String dataEntrada) {
+    public boolean setDataEntrada(LocalDate dataEntrada) {
         this.dataEntrada = dataEntrada;
         return true;
     }
 
-    public String getDataSaida() {
+    public LocalDate getDataSaida() {
         return dataSaida;
     }
-    public boolean setDataSaida(String dataSaida) { this.dataSaida = dataSaida;
-    return true;
+    public boolean setDataSaida(LocalDate dataSaida) {
+        this.dataSaida = dataSaida;
+        return true;
     }
 
-    public String getAtiva(){ return ativa; }
-    public boolean setAtiva(String ativa){ this.ativa = ativa;
-    return true;
+    public boolean getAtiva(){ return ativa; }
+
+    public boolean setAtiva(boolean ativa){
+        this.ativa = ativa;
+        return true;
     }
 }
