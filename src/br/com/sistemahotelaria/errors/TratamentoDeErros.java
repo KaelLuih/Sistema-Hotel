@@ -26,15 +26,28 @@ public class TratamentoDeErros {
         }
     }
 
-    public static LocalDate data(){
+    public static LocalDate dataObrigatoria(){
         while (true){
-            System.out.print("\nInsira a data: ");
+            View.opcao();
             String dt = input.nextLine();
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
             try{
                 LocalDate data = LocalDate.parse(dt, formatter);
                 return data;
             } catch (DateTimeParseException e){
+                View.erro();
+            }
+        }
+    }
+
+    public static LocalDate dataOpcional(){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        while (true) {
+            String dt = input.nextLine().trim();
+            if (dt.isEmpty()) return null;
+            try {
+                return LocalDate.parse(dt, formatter);
+            } catch (DateTimeParseException e) {
                 View.erro();
             }
         }

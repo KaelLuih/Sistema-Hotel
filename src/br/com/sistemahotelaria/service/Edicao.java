@@ -1,5 +1,6 @@
 package br.com.sistemahotelaria.service;
 
+import br.com.sistemahotelaria.errors.TratamentoDeErros;
 import br.com.sistemahotelaria.model.Hospede;
 import br.com.sistemahotelaria.model.Quarto;
 import br.com.sistemahotelaria.model.Reserva;
@@ -8,6 +9,7 @@ import br.com.sistemahotelaria.view.View;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Locale;
 
 public class Edicao {
 
@@ -88,15 +90,21 @@ public class Edicao {
             return;
         }
 
-        String novaEntrada = view.lerEntrada("Data entrada atual: " + reserva.getDataEntrada() + " | Nova (yyyy-MM-dd ou ENTER p/ manter): ");
-        if (!novaEntrada.trim().isEmpty()) reserva.setDataEntrada(LocalDate.parse(novaEntrada));
+        view.mensagemEdicao("Data entrada atual: " + reserva.getDataEntrada() + " | Nova (dd/MM/yyyy ou ENTER p/ manter): ");
+        LocalDate novaEntrada = TratamentoDeErros.dataOpcional();
+        if(novaEntrada != null){
+            reserva.setDataEntrada(novaEntrada);
+        }
 
-        String novaSaida = view.lerEntrada("Data saída atual: " + reserva.getDataSaida() + " | Nova (yyyy-MM-dd ou ENTER p/ manter): ");
-        if (!novaSaida.trim().isEmpty()) reserva.setDataSaida(LocalDate.parse(novaSaida));
+        view.mensagemEdicao("Data saída atual: " + reserva.getDataSaida() + " | Nova (dd/MM/yyyy ou ENTER p/ manter): ");
+        novaEntrada = TratamentoDeErros.dataOpcional();
+        if (novaEntrada != null){
+            reserva.setDataEntrada(novaEntrada);
+        }
 
         String ativo = view.lerEntrada("Status atual: " + (reserva.getAtiva() ? "Ativa" : "Cancelada") + " | Digite S para Ativa, N para Cancelada, ENTER p/ manter: ");
-        if (ativo.equalsIgnoreCase("S")) reserva.setAtiva(true);
-        else if (ativo.equalsIgnoreCase("N")) reserva.setAtiva(false);
+        if (ativo.equalsIgnoreCase("S".toUpperCase())) reserva.setAtiva(true);
+        else if (ativo.equalsIgnoreCase("N".toUpperCase())) reserva.setAtiva(false);
 
         view.editadoComSucesso();
     }

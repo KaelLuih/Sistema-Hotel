@@ -154,15 +154,17 @@ public class View {
         System.out.println("Sistema encerrado.");
     }
 
-public String lerEntrada(String mensagem) {
-    System.out.print(mensagem);
-    java.util.Scanner sc = new java.util.Scanner(System.in);
-    return sc.nextLine();
-}
+    public String lerEntrada(String mensagem) {
+        System.out.print(mensagem);
+        java.util.Scanner sc = new java.util.Scanner(System.in);
+        return sc.nextLine();
+    }
 
-public void editadoComSucesso() {
-    System.out.println("✔ Registro editado com sucesso!");
-}
+    public void editadoComSucesso() {
+        System.out.println("✔ Registro editado com sucesso!");
+    }
 
-
+    public void mensagemEdicao(String mensagem){
+        System.out.println(mensagem);
+    }
 }

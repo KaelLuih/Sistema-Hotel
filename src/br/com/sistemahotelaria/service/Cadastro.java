@@ -78,11 +78,11 @@ public class Cadastro {
 
         do {
             View.textoCadastro("Data de Entrada");
-        }while (!res.setDataEntrada(TratamentoDeErros.data()));
+        }while (!res.setDataEntrada(TratamentoDeErros.dataObrigatoria()));
 
         do {
             View.textoCadastro("Data de Saida");
-        }while(!res.setDataSaida(TratamentoDeErros.data()));
+        }while(!res.setDataSaida(TratamentoDeErros.dataObrigatoria()));
 
         do {
             View.textoCadastro("Nome do Hospede");
