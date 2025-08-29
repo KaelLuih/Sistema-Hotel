@@ -29,11 +29,16 @@ public class TratamentoDeErros {
     public static LocalDate dataObrigatoria(){
         while (true){
             View.opcao();
+            LocalDate agora = LocalDate.now();
             String dt = input.nextLine();
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
             try{
                 LocalDate data = LocalDate.parse(dt, formatter);
-                return data;
+                if(data.isAfter(agora) || data.isEqual(agora)){
+                    return data;
+                } else {
+                    View.dataInvalida();
+                }
             } catch (DateTimeParseException e){
                 View.erro();
             }
@@ -43,10 +48,16 @@ public class TratamentoDeErros {
     public static LocalDate dataOpcional(){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         while (true) {
+            LocalDate agora = LocalDate.now();
             String dt = input.nextLine().trim();
             if (dt.isEmpty()) return null;
             try {
-                return LocalDate.parse(dt, formatter);
+                LocalDate data = LocalDate.parse(dt, formatter);
+                if(data.isAfter(agora) || data.isEqual(agora)){
+                    return data;
+                } else {
+                    View.dataInvalida();
+                }
             } catch (DateTimeParseException e) {
                 View.erro();
             }

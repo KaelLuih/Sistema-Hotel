@@ -167,4 +167,8 @@ public class View {
     public void mensagemEdicao(String mensagem){
         System.out.println(mensagem);
     }
+
+    public static void dataInvalida(){
+        System.out.println("\nA data é inválida.");
+    }
 }
