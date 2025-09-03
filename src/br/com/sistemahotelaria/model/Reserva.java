@@ -23,7 +23,15 @@ public class Reserva {
 
     @Override
     public String toString(){
-        return "\nHospede: " + hospede + "\nQuarto: " + quarto + "\nData de check-in: " + dataEntrada + "\nData de check-out: " + dataSaida + "\nStatus: " + ativa;
+        return "\nHospede: " + hospede + "\n\nQuarto: " + quarto + "\n\nData de check-in: " + dataEntrada + "\nData de check-out: " + dataSaida + "\nStatus: " + ativa;
+    }
+
+    public boolean printDataSaidaInvalida(LocalDate diaEntrada) {
+        boolean invalida = this.dataSaida.isAfter(diaEntrada);
+        if(!invalida){
+            System.out.println("\nData inválida! Insira novamente.");
+        }
+        return invalida;
     }
 
     public Hospede getHospede() {

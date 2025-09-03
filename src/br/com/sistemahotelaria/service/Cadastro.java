@@ -7,9 +7,12 @@ import br.com.sistemahotelaria.model.Reserva;
 import br.com.sistemahotelaria.model.Usuario;
 import br.com.sistemahotelaria.view.View;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import static br.com.sistemahotelaria.service.Pesquisa.entrada;
 
 public class Cadastro {
     private static final Scanner input = new Scanner(System.in);
@@ -80,9 +83,11 @@ public class Cadastro {
             View.textoCadastro("Data de Entrada");
         }while (!res.setDataEntrada(TratamentoDeErros.dataObrigatoria()));
 
+        LocalDate diaEntrada = res.getDataEntrada();
         do {
             View.textoCadastro("Data de Saida");
-        }while(!res.setDataSaida(TratamentoDeErros.dataObrigatoria()));
+        } while (!res.setDataSaida(TratamentoDeErros.dataObrigatoria())
+                || !res.printDataSaidaInvalida(diaEntrada));
 
         do {
             View.textoCadastro("Nome do Hospede");
