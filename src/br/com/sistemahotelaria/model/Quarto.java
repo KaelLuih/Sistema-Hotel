@@ -3,7 +3,7 @@ package br.com.sistemahotelaria.model;
 public class Quarto {
     private String numero;
     private String tipo;
-    private String preco;
+    private double preco;
 
 
     public Quarto(){
@@ -33,10 +33,10 @@ public class Quarto {
     return true;
     }
 
-    public String getPreco() {
+    public double getPreco() {
         return preco;
     }
-    public boolean setPreco(String preco) {
+    public boolean setPreco(double preco) {
         this.preco = preco;
         return true;
     }

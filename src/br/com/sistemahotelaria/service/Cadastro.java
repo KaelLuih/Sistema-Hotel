@@ -48,7 +48,7 @@ public class Cadastro {
 
         do {
             View.textoCadastro("Preço");
-        }while (!quar.setPreco(input.nextLine()));
+        }while (!quar.setPreco(TratamentoDeErros.preco()));
 
     return quar;
     }

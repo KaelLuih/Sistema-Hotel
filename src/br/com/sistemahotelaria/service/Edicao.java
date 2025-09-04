@@ -65,8 +65,10 @@ public class Edicao {
         String novoTipo = view.lerEntrada("Tipo atual: " + quarto.getTipo() + " | Novo (ENTER p/ manter): ");
         if (!novoTipo.trim().isEmpty()) quarto.setTipo(novoTipo);
 
-        String novoPreco = view.lerEntrada("Preço atual: " + quarto.getPreco() + " | Novo (ENTER p/ manter): ");
-        if (!novoPreco.trim().isEmpty()) quarto.setPreco(novoPreco);
+        double novoPreco = Double.parseDouble(view.lerEntrada("Preço atual: " + quarto.getPreco() + " | Novo (ENTER p/ manter): "));
+        if (novoPreco == ){
+            quarto.setPreco(novoPreco);
+        }
 
         view.editadoComSucesso();
     }

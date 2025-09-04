@@ -26,6 +26,21 @@ public class TratamentoDeErros {
         }
     }
 
+    public static double preco() {
+        double Escolha;
+        while (true) {
+            View.opcao();
+            String opcaoEscolhida = input.nextLine();
+
+            try{
+                Escolha = Double.parseDouble(opcaoEscolhida);
+                return Escolha;
+            }catch (NumberFormatException erro){
+                View.erro();
+            }
+        }
+    }
+
     public static LocalDate dataObrigatoria(){
         while (true){
             View.opcao();
