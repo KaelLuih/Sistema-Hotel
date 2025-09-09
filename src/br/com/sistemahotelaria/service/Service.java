@@ -17,6 +17,7 @@ public class Service {
 
     public static boolean gerenciar(int escolha, View view) {
         boolean continuar = true;
+        boolean encontrado = false;
 
         switch (escolha) {
             case 1 -> { // HÓSPEDE
@@ -36,13 +37,18 @@ public class Service {
                         }
                     }
                     case 3 -> { // Pesquisar
+                        encontrado = false;
                         view.cabecalho("PESQUISAR HÓSPEDE");
                         String nome = view.lerEntrada("Digite o nome do hóspede: ");
                         for (Usuario u : usuarioList) {
                             if (u instanceof Hospede h && h.getNome().equalsIgnoreCase(nome)) {
                                 view.listarHospede(h);
+                                encontrado = true;
                                 break;
                             }
+                        }
+                        if(!encontrado){
+                            view.nEncontrado();
                         }
                     }
                     case 4 -> { // Editar
@@ -66,13 +72,18 @@ public class Service {
                         }
                     }
                     case 3 -> { // Pesquisar
+                        encontrado = false;
                         view.cabecalho("PESQUISAR QUARTO");
                         String numero = view.lerEntrada("Digite o número do quarto: ");
                         for (Quarto q : quartoList) {
                             if (q.getNumero().equalsIgnoreCase(numero)) {
                                 view.listarQuarto(q);
+                                encontrado = true;
                                 break;
                             }
+                        }
+                        if(!encontrado){
+                            view.nEncontrado();
                         }
                     }
                     case 4 -> { // Editar
@@ -96,6 +107,7 @@ public class Service {
                         }
                     }
                     case 3 -> { // Pesquisar
+                        encontrado = false;
                         view.cabecalho("PESQUISAR RESERVA");
                         String nome = view.lerEntrada("Digite o nome do hóspede da reserva: ");
                         for (Reserva r : reservaList) {
@@ -104,20 +116,28 @@ public class Service {
                                 break;
                             }
                         }
+                        if(!encontrado){
+                            view.nEncontrado();
+                        }
                     }
                     case 4 -> { // Cancelar
                         String nome = view.lerEntrada("Digite o nome do hóspede da reserva: ");
                         for (Reserva r : reservaList) {
                             if (r.getHospede() != null && r.getHospede().getNome().equalsIgnoreCase(nome)) {
-                                r.setAtiva(false);
-                                view.reservaCancelada();
+                                view.listarReserva(r);
+                                escolha = view.cancelarReserva();
+                                switch (escolha){
+                                    case 1 ->{
+                                        r.setAtiva(false);
+                                        view.reservaCancelada();
+                                    }
+                                }
                                 break;
                             }
                         }
                     }
-                    case 5 -> { // Editar
+                    case 5 -> // Editar
                         Edicao.editarReserva(reservaList, view);
-                    }
                 }
             }
 

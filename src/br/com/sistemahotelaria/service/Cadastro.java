@@ -32,6 +32,7 @@ public class Cadastro {
             View.textoCadastro("Telefone");
         } while (!hosp.setTelefone(input.nextLine()));
 
+        View.sucessCadastro();
         return hosp;
     }
 
@@ -50,7 +51,8 @@ public class Cadastro {
             View.textoCadastro("Preço");
         }while (!quar.setPreco(TratamentoDeErros.preco()));
 
-    return quar;
+        View.sucessCadastro();
+        return quar;
     }
 
     public static Reserva CadastroDeReserva(){
@@ -75,9 +77,7 @@ public class Cadastro {
         }while(quarto.getNumero() == null || quarto.getNumero().isEmpty());
         res.setQuarto(quarto);
 
-        do {
-            View.textoCadastro("Ativo true/false");
-        }while (!res.setAtiva(Boolean.parseBoolean(input.nextLine())));
+        res.setAtiva(true);
 
         do {
             View.textoCadastro("Data de Entrada");
@@ -104,6 +104,8 @@ public class Cadastro {
             }
         }while(hosp.getNome() == null || hosp.getNome().isEmpty());
         res.setHospede(hosp);
+
+        View.sucessCadastro();
 
         return res;
     }

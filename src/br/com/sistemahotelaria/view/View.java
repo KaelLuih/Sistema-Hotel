@@ -65,7 +65,7 @@ public class View {
     }
 
     public int cancelarReserva(){
-        System.out.println(" ____________________________");
+        System.out.println("\n ____________________________");
         System.out.println("|      CANCELAR RESERVA      |");
         System.out.println("|----------------------------|");
         System.out.println("| Deseja cancelar a reserva? |");
@@ -108,16 +108,16 @@ public class View {
         sc.nextLine();
     }
 
-    public void listarHospede(Hospede h){
-        System.out.println("\n" + h);
+    public void listarHospede(Hospede hospede){
+        System.out.println("\n" + hospede);
     }
 
-    public void listarQuarto(Quarto q){
-        System.out.println("\n" + q);
+    public void listarQuarto(Quarto quarto){
+        System.out.println("\n" + quarto);
     }
 
-    public void listarReserva(Reserva r){
-        System.out.println("\n" + r);
+    public void listarReserva(Reserva reserva){
+        System.out.println("\n" + reserva);
     }
 
     public String pesquisaHospede(){
@@ -151,17 +151,16 @@ public class View {
     }
 
     public void encerrar(){
-        System.out.println("Sistema encerrado.");
+        System.out.println("\nSistema encerrado.");
     }
 
     public String lerEntrada(String mensagem) {
         System.out.print(mensagem);
-        java.util.Scanner sc = new java.util.Scanner(System.in);
         return sc.nextLine();
     }
 
     public void editadoComSucesso() {
-        System.out.println("✔ Registro editado com sucesso!");
+        System.out.println("\n✔ Registro editado com sucesso!");
     }
 
     public void mensagemEdicao(String mensagem){
@@ -170,5 +169,9 @@ public class View {
 
     public static void dataInvalida(){
         System.out.println("\nA data é inválida.");
+    }
+
+    public static void sucessCadastro(){
+        System.out.println("\nCadastro realizado com sucesso!");
     }
 }

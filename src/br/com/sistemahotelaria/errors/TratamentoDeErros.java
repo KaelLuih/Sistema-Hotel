@@ -41,6 +41,18 @@ public class TratamentoDeErros {
         }
     }
 
+    public static double precoEdit(String preco) {
+        double Escolha;
+        while (true) {
+            try{
+                Escolha = Double.parseDouble(preco);
+                return Escolha;
+            }catch (NumberFormatException erro){
+                View.erro();
+            }
+        }
+    }
+
     public static LocalDate dataObrigatoria(){
         while (true){
             View.opcao();
