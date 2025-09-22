@@ -1,4 +1,4 @@
-# 🏨 Projeto Back-End - Sistema de Gestão de Hotel  
+# 🏨 Projeto de Técnicas de Programação - Sistema de Gestão de Hotel  
 
 ---
 
@@ -88,3 +88,4 @@ javac src/**/*.java
 **Kael Luih de Araujo**  
 📧 Email: kael_araujo@estudante.sesisenai.org.br  
 🔗 GitHub: [Kael Luih de Araújo](https://github.com/KaelLuih) 
+
