@@ -100,5 +100,6 @@ javac src/**/*.java
 
 ## 👩‍💻 Autores  
 
-| <img loading="lazy" src="https://avatars.githubusercontent.com/u/187458159?v=4" width="115"><br><sub><a href="https://github.com/Liiiiisssz">Elis Jasper</a><br><span style="color:#8A2BE2">🧭 Scrum Master</span></sub> | <img loading="lazy" src="https://avatars.githubusercontent.com/u/189893504?v=4" width="115"><br><sub><a href="https://github.com/KaelLuih">Kael Luih de Araujo</a><br><span style="color:#00BFFF">💻 Desenvolvedor</span></sub> |
+| <img loading="lazy" src="https://avatars.githubusercontent.com/u/187458159?v=4" width="115"><br><sub><a href="https://github.com/Liiiiisssz">Elis Jasper</a><br><span style="color:#8A2BE2">💻 Desenvolvedora</span></sub> | <img loading="lazy" src="https://avatars.githubusercontent.com/u/189893504?v=4" width="115"><br><sub><a href="https://github.com/KaelLuih">Kael Luih de Araujo</a><br><span style="color:#00BFFF">💻 Desenvolvedor</span></sub> |
 | :---: | :---: | 
+
