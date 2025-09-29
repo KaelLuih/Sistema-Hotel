@@ -3,10 +3,13 @@
 ---
 
 ## 📋 Descrição  
-Este projeto consiste no desenvolvimento de um **sistema de gestão para hotéis**, implementado em **Java**.  
-O sistema permite **cadastrar hóspedes, quartos, reservas e serviços**, além de realizar pesquisas, edições e cancelamentos.  
 
-Foi projetado para rodar no **terminal**, aplicando conceitos de **POO (Programação Orientada a Objetos)**, **listas genéricas** e **tratamento de erros**.  
+Este projeto consiste no desenvolvimento de um **sistema de gestão para hotéis**, implementado em **Java**.
+O sistema permite **cadastrar hóspedes, quartos, reservas e serviços**, além de realizar pesquisas, edições e cancelamentos.
+
+Foi projetado para rodar no **terminal**, aplicando conceitos de **POO (Programação Orientada a Objetos)**, **listas genéricas** e **tratamento de erros**.
+
+Além disso, foi desenvolvido um **front-end meramente ilustrativo**, utilizando HTML, Tailwind CSS e JavaScript, apenas para fins de apresentação visual, **sem estar conectado ao backend**.
 
 ---
 
@@ -17,17 +20,28 @@ Foi projetado para rodar no **terminal**, aplicando conceitos de **POO (Programa
 - ✏️ **Edição de dados** de hóspedes  
 - ❌ **Cancelamento de reservas**  
 - 🛠️ **Aplicação de POO**: encapsulamento, herança, polimorfismo e agregação  
-- ⚡ **Tratamento de erros** para entradas inválidas  
+- ⚡ **Tratamento de erros** para entradas inválidas
+- 🎨 **Front-end ilustrativo** para simular a interface do sistema
 
 ---
 
-## 🛠️ Tecnologias Utilizadas  
+## 🎞️ Demonstração do Projeto
+
 <div align="center">
-  <img src="https://cdn-icons-png.flaticon.com/512/226/226777.png" width="20" alt="Java"> 
-  <strong>Java 17+</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="https://cdn-icons-png.flaticon.com/512/2111/2111432.png" width="20" alt="VS Code"> 
-  <strong>VS Code / IntelliJ</strong>
-</div>  
+    <img src="/front/assets/gif.gif" alt="GIF demonstrando o projeto">
+</div>
+
+---
+
+
+## 🛠️ Tecnologias Utilizadas  
+<div align="center"> 
+  <img src="https://cdn-icons-png.flaticon.com/512/226/226777.png" width="20" alt="Java"> <strong>Java 17+</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  <img src="https://cdn-icons-png.flaticon.com/512/2111/2111432.png" width="20" alt="VS Code"> <strong>VS Code / IntelliJ</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  <img src="https://cdn-icons-png.flaticon.com/512/732/732212.png" width="20" alt="HTML"> <strong>HTML</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  <img src="https://cdn.worldvectorlogo.com/logos/tailwindcss.svg" width="20" alt="Tailwind"> <strong>Tailwind CSS</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  <img src="https://cdn-icons-png.flaticon.com/512/5968/5968292.png" width="20" alt="JavaScript"> <strong>JavaScript</strong> 
+</div>
 
 ---
 
@@ -77,7 +91,6 @@ cd caminho-do-projeto
 javac src/**/*.java
 ```
 
-
 ---
 
 ## 👩‍💻 Autores  
@@ -88,4 +101,3 @@ javac src/**/*.java
 **Kael Luih de Araujo**  
 📧 Email: kael_araujo@estudante.sesisenai.org.br  
 🔗 GitHub: [Kael Luih de Araújo](https://github.com/KaelLuih) 
-

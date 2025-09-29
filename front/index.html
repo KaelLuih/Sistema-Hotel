@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viridian Hotel - Sistema Administrativo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#86efac',
+                        'primary-dark': '#4ade80',
+                        secondary: '#1f2937',
+                        accent: '#6ee7b7',
+                        background: '#ffffff',
+                        surface: '#f0fdf4',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .section { display: none; }
+        .section.active { display: block; }
+        .nav-item.active { background-color: #86efac; color: #1f2937; }
+    </style>
+</head>
+<body class="bg-background min-h-screen">
+
+    <header class="bg-white text-secondary shadow-lg border-b-4 border-primary">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="w-20 h-20 rounded-lg flex items-center justify-center">
+                        <img src="assets/logo.png" alt="Logo do hotel" class="w-full h-full object-contain">
+                    </div>
+
+                    <div>
+                        <h1 class="text-2xl font-bold">Viridian Hotel</h1>
+                        <p class="text-sm text-gray-600">Sistema Administrativo</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4">
+                    <span class="text-sm">Bem Vindo <b>BRUNO</b>!</span>
+                    <button class="bg-primary hover:bg-primary-dark text-secondary px-4 py-2 rounded-lg text-sm font-medium transition">
+                        Sair
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="bg-surface shadow-md border-b border-primary">
+        <div class="container mx-auto px-6">
+            <div class="flex gap-2">
+                <button onclick="showSection('quartos')" class="nav-item active px-6 py-4 font-medium transition hover:bg-primary">
+                    Quartos
+                </button>
+                <button onclick="showSection('hospedes')" class="nav-item px-6 py-4 font-medium transition hover:bg-primary">
+                    Hóspedes
+                </button>
+                <button onclick="showSection('reservas')" class="nav-item px-6 py-4 font-medium transition hover:bg-primary">
+                    Reservas
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-6 py-8">
+        
+        <section id="quartos" class="section active">
+            <div class="mb-6 flex items-center justify-between">
+                <h2 class="text-3xl font-bold text-secondary">Gerenciar Quartos</h2>
+                <button onclick="toggleForm('form-quarto')" class="bg-primary hover:bg-primary-dark text-secondary px-6 py-3 rounded-lg font-medium transition shadow-md">
+                    + Novo Quarto
+                </button>
+            </div>
+
+            <div id="form-quarto" class="bg-surface rounded-xl shadow-md p-6 mb-6 hidden border border-primary">
+                <h3 class="text-xl font-bold text-secondary mb-4">Cadastrar/Editar Quarto</h3>
+                <form class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Número do Quarto</label>
+                        <input type="text" placeholder="Ex: 101" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Tipo</label>
+                        <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white">
+                            <option>Standard</option>
+                            <option>Luxo</option>
+                            <option>Suíte</option>
+                            <option>Presidencial</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Capacidade</label>
+                        <input type="number" placeholder="Ex: 2" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Preço Diária (R$)</label>
+                        <input type="number" placeholder="Ex: 250.00" step="0.01" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Status</label>
+                        <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white">
+                            <option>Disponível</option>
+                            <option>Ocupado</option>
+                            <option>Manutenção</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Andar</label>
+                        <input type="number" placeholder="Ex: 1" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white">
+                    </div>
+                    <div class="md:col-span-2 flex gap-3 justify-end">
+                        <button type="button" onclick="toggleForm('form-quarto')" class="px-6 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition bg-white">
+                            Cancelar
+                        </button>
+                        <button type="submit" class="px-6 py-2 bg-primary text-secondary rounded-lg hover:bg-primary-dark transition font-medium">
+                            Salvar Quarto
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-md p-4 mb-6 border border-gray-200">
+                <div class="flex gap-3">
+                    <input type="text" placeholder="Pesquisar por número, tipo ou status..." class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                    <button class="bg-accent text-secondary px-6 py-2 rounded-lg hover:bg-primary transition font-medium">
+                        Pesquisar
+                    </button>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200">
+                <table class="w-full">
+                    <thead class="bg-surface border-b border-primary">
+                        <tr>
+                            <th class="px-6 py-4 text-left text-sm font-semibold text-gray-700">Número</th>
+                            <th class="px-6 py-4 text-left text-sm font-semibold text-gray-700">Tipo</th>
+                            <th class="px-6 py-4 text-left text-sm font-semibold text-gray-700">Capacidade</th>
+                            <th class="px-6 py-4 text-left text-sm font-semibold text-gray-700">Preço</th>
+                            <th class="px-6 py-4 text-left text-sm font-semibold text-gray-700">Status</th>
+                            <th class="px-6 py-4 text-left text-sm font-semibold text-gray-700">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200">
+                        <tr class="hover:bg-surface">
+                            <td class="px-6 py-4 text-sm font-medium text-gray-900">101</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">Standard</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">2 pessoas</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">R$ 250,00</td>
+                            <td class="px-6 py-4">
+                                <span class="px-3 py-1 text-xs font-medium bg-primary text-secondary rounded-full">Disponível</span>
+                            </td>
+                            <td class="px-6 py-4 text-sm">
+                                <button class="text-primary-dark hover:text-primary font-medium mr-3">Editar</button>
+                                <button class="text-red-600 hover:text-red-800 font-medium">Excluir</button>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-surface">
+                            <td class="px-6 py-4 text-sm font-medium text-gray-900">102</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">Luxo</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">3 pessoas</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">R$ 450,00</td>
+                            <td class="px-6 py-4">
+                                <span class="px-3 py-1 text-xs font-medium bg-red-100 text-red-800 rounded-full">Ocupado</span>
+                            </td>
+                            <td class="px-6 py-4 text-sm">
+                                <button class="text-primary-dark hover:text-primary font-medium mr-3">Editar</button>
+                                <button class="text-red-600 hover:text-red-800 font-medium">Excluir</button>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-surface">
+                            <td class="px-6 py-4 text-sm font-medium text-gray-900">201</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">Suíte</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">4 pessoas</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">R$ 650,00</td>
+                            <td class="px-6 py-4">
+                                <span class="px-3 py-1 text-xs font-medium bg-yellow-100 text-yellow-800 rounded-full">Manutenção</span>
+                            </td>
+                            <td class="px-6 py-4 text-sm">
+                                <button class="text-primary-dark hover:text-primary font-medium mr-3">Editar</button>
+                                <button class="text-red-600 hover:text-red-800 font-medium">Excluir</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="hospedes" class="section">
+            <div class="mb-6 flex items-center justify-between">
+                <h2 class="text-3xl font-bold text-secondary">Gerenciar Hóspedes</h2>
+                <button onclick="toggleForm('form-hospede')" class="bg-primary hover:bg-primary-dark text-secondary px-6 py-3 rounded-lg font-medium transition shadow-md">
+                    + Novo Hóspede
+                </button>
+            </div>
+
+            <div id="form-hospede" class="bg-surface rounded-xl shadow-md p-6 mb-6 hidden border border-primary">
+                <h3 class="text-xl font-bold text-secondary mb-4">Cadastrar/Editar Hóspede</h3>
+                <form class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Nome Completo</label>
+                        <input type="text" placeholder="Ex: João Silva" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">CPF</label>
+                        <input type="text" placeholder="000.000.000-00" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                        <input type="email" placeholder="joao@email.com" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Telefone</label>
+                        <input type="tel" placeholder="(00) 00000-0000" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Data de Nascimento</label>
+                        <input type="date" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Nacionalidade</label>
+                        <input type="text" placeholder="Ex: Brasileira" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white">
+                    </div>
+                    <div class="md:col-span-2">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Endereço</label>
+                        <input type="text" placeholder="Rua, número, bairro, cidade" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white">
+                    </div>
+                    <div class="md:col-span-2 flex gap-3 justify-end">
+                        <button type="button" onclick="toggleForm('form-hospede')" class="px-6 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition bg-white">
+                            Cancelar
+                        </button>
+                        <button type="submit" class="px-6 py-2 bg-primary text-secondary rounded-lg hover:bg-primary-dark transition font-medium">
+                            Salvar Hóspede
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-md p-4 mb-6 border border-gray-200">
+                <div class="flex gap-3">
+                    <input type="text" placeholder="Pesquisar por nome, CPF ou email..." class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                    <button class="bg-accent text-secondary px-6 py-2 rounded-lg hover:bg-primary transition font-medium">
+                        Pesquisar
+                    </button>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200">
+                <table class="w-full">
+                    <thead class="bg-surface border-b border-primary">
+                        <tr>
+                            <th class="px-6 py-4 text-left text-sm font-semibold text-gray-700">Nome</th>
+                            <th class="px-6 py-4 text-left text-sm font-semibold text-gray-700">CPF</th>
+                            <th class="px-6 py-4 text-left text-sm font-semibold text-gray-700">Email</th>
+                            <th class="px-6 py-4 text-left text-sm font-semibold text-gray-700">Telefone</th>
+                            <th class="px-6 py-4 text-left text-sm font-semibold text-gray-700">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200">
+                        <tr class="hover:bg-surface">
+                            <td class="px-6 py-4 text-sm font-medium text-gray-900">Maria Santos</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">123.456.789-00</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">maria@email.com</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">(11) 98765-4321</td>
+                            <td class="px-6 py-4 text-sm">
+                                <button class="text-primary-dark hover:text-primary font-medium mr-3">Editar</button>
+                                <button class="text-red-600 hover:text-red-800 font-medium">Excluir</button>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-surface">
+                            <td class="px-6 py-4 text-sm font-medium text-gray-900">Pedro Oliveira</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">987.654.321-00</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">pedro@email.com</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">(21) 91234-5678</td>
+                            <td class="px-6 py-4 text-sm">
+                                <button class="text-primary-dark hover:text-primary font-medium mr-3">Editar</button>
+                                <button class="text-red-600 hover:text-red-800 font-medium">Excluir</button>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-surface">
+                            <td class="px-6 py-4 text-sm font-medium text-gray-900">Ana Costa</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">456.789.123-00</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">ana@email.com</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">(31) 99876-5432</td>
+                            <td class="px-6 py-4 text-sm">
+                                <button class="text-primary-dark hover:text-primary font-medium mr-3">Editar</button>
+                                <button class="text-red-600 hover:text-red-800 font-medium">Excluir</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="reservas" class="section">
+            <div class="mb-6 flex items-center justify-between">
+                <h2 class="text-3xl font-bold text-secondary">Gerenciar Reservas</h2>
+                <button onclick="toggleForm('form-reserva')" class="bg-primary hover:bg-primary-dark text-secondary px-6 py-3 rounded-lg font-medium transition shadow-md">
+                    + Nova Reserva
+                </button>
+            </div>
+
+            <div id="form-reserva" class="bg-surface rounded-xl shadow-md p-6 mb-6 hidden border border-primary">
+                <h3 class="text-xl font-bold text-secondary mb-4">Cadastrar/Editar Reserva</h3>
+                <form class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Hóspede</label>
+                        <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white">
+                            <option>Selecione um hóspede</option>
+                            <option>Maria Santos - 123.456.789-00</option>
+                            <option>Pedro Oliveira - 987.654.321-00</option>
+                            <option>Ana Costa - 456.789.123-00</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Quarto</label>
+                        <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white">
+                            <option>Selecione um quarto</option>
+                            <option>101 - Standard - R$ 250,00</option>
+                            <option>102 - Luxo - R$ 450,00</option>
+                            <option>201 - Suíte - R$ 650,00</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Data Check-in</label>
+                        <input type="date" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Data Check-out</label>
+                        <input type="date" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Número de Hóspedes</label>
+                        <input type="number" placeholder="Ex: 2" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Valor Total (R$)</label>
+                        <input type="number" placeholder="Calculado automaticamente" step="0.01" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-gray-50" readonly>
+                    </div>
+                    <div class="md:col-span-2">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Observações</label>
+                        <textarea rows="3" placeholder="Observações adicionais..." class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white"></textarea>
+                    </div>
+                    <div class="md:col-span-2 flex gap-3 justify-end">
+                        <button type="button" onclick="toggleForm('form-reserva')" class="px-6 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition bg-white">
+                            Cancelar
+                        </button>
+                        <button type="submit" class="px-6 py-2 bg-primary text-secondary rounded-lg hover:bg-primary-dark transition font-medium">
+                            Salvar Reserva
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-md p-4 mb-6 border border-gray-200">
+                <div class="flex gap-3">
+                    <input type="text" placeholder="Pesquisar por hóspede, quarto ou data..." class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                    <button class="bg-accent text-secondary px-6 py-2 rounded-lg hover:bg-primary transition font-medium">
+                        Pesquisar
+                    </button>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200">
+                <table class="w-full">
+                    <thead class="bg-surface border-b border-primary">
+                        <tr>
+                            <th class="px-6 py-4 text-left text-sm font-semibold text-gray-700">Código</th>
+                            <th class="px-6 py-4 text-left text-sm font-semibold text-gray-700">Hóspede</th>
+                            <th class="px-6 py-4 text-left text-sm font-semibold text-gray-700">Quarto</th>
+                            <th class="px-6 py-4 text-left text-sm font-semibold text-gray-700">Check-in</th>
+                            <th class="px-6 py-4 text-left text-sm font-semibold text-gray-700">Check-out</th>
+                            <th class="px-6 py-4 text-left text-sm font-semibold text-gray-700">Valor</th>
+                            <th class="px-6 py-4 text-left text-sm font-semibold text-gray-700">Status</th>
+                            <th class="px-6 py-4 text-left text-sm font-semibold text-gray-700">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200">
+                        <tr class="hover:bg-surface">
+                            <td class="px-6 py-4 text-sm font-medium text-gray-900">#001</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">Maria Santos</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">102</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">15/01/2025</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">20/01/2025</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">R$ 2.250,00</td>
+                            <td class="px-6 py-4">
+                                <span class="px-3 py-1 text-xs font-medium bg-green-300 text-secondary rounded-full">Confirmada</span>
+                            </td>
+                            <td class="px-6 py-4 text-sm">
+                                <button class="text-primary-dark hover:text-primary font-medium mr-3">Editar</button>
+                                <button class="text-red-600 hover:text-red-800 font-medium">Cancelar</button>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-surface">
+                            <td class="px-6 py-4 text-sm font-medium text-gray-900">#002</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">Pedro Oliveira</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">101</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">22/01/2025</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">25/01/2025</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">R$ 750,00</td>
+                            <td class="px-6 py-4">
+                                <span class="px-3 py-1 text-xs font-medium bg-yellow-100 text-yellow-800 rounded-full">Pendente</span>
+                            </td>
+                            <td class="px-6 py-4 text-sm">
+                                <button class="text-primary-dark hover:text-primary font-medium mr-3">Editar</button>
+                                <button class="text-red-600 hover:text-red-800 font-medium">Cancelar</button>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-red-50">
+                            <td class="px-6 py-4 text-sm font-medium text-gray-900">#003</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">Ana Costa</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">201</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">10/01/2025</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">12/01/2025</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">R$ 1.300,00</td>
+                            <td class="px-6 py-4">
+                                <span class="px-3 py-1 text-xs font-medium bg-red-100 text-red-800 rounded-full">Cancelada</span>
+                            </td>
+                            <td class="px-6 py-4 text-sm">
+                                <button class="text-gray-400 font-medium mr-3" disabled>Editar</button>
+                                <button class="text-gray-400 font-medium" disabled>Cancelar</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-white border-t-2 border-primary mt-12">
+        <div class="container mx-auto px-6 py-4">
+            <p class="text-center text-sm text-gray-600">
+                © 2025 Viridian Hotel - Sistema Administrativo | Todos os direitos reservados
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        function showSection(sectionName) {
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            document.getElementById(sectionName).classList.add('active');
+            
+            event.target.classList.add('active');
+        }
+
+        function toggleForm(formId) {
+            const form = document.getElementById(formId);
+            if (form.classList.contains('hidden')) {
+                form.classList.remove('hidden');
+            } else {
+                form.classList.add('hidden');
+            }
+        }
+
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Formulário enviado com sucesso!');
+                toggleForm(this.parentElement.id);
+            });
+        });
+    </script>
+</body>
+</html>
