@@ -3,7 +3,6 @@ package br.com.sistemahotelaria.service;
 import br.com.sistemahotelaria.model.Hospede;
 import br.com.sistemahotelaria.model.Quarto;
 import br.com.sistemahotelaria.model.Reserva;
-import br.com.sistemahotelaria.model.Usuario;
 import br.com.sistemahotelaria.view.View;
 
 import java.util.ArrayList;
