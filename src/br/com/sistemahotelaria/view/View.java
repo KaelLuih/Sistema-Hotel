@@ -1,20 +1,7 @@
 package br.com.sistemahotelaria.view;
 
-import br.com.sistemahotelaria.errors.TratamentoDeErros;
-import br.com.sistemahotelaria.model.Hospede;
-import br.com.sistemahotelaria.model.Quarto;
-import br.com.sistemahotelaria.model.Reserva;
-
-import java.util.Scanner;
-
 public class View {
-    private static Scanner sc;
-
-    public View(){
-        sc = new Scanner(System.in);
-    }
-
-    public static int menu(){
+    public static void menu(){
         System.out.println("\n ______________________________");
         System.out.println("|             HOTEL            |");
         System.out.println("|------------------------------|");
@@ -24,10 +11,9 @@ public class View {
         System.out.println("|------------------------------|");
         System.out.println("| 0. Sair do sistema           |");
         System.out.println("|______________________________|");
-        return TratamentoDeErros.Erros();
     }
 
-    public int menuHospede(){
+    public static void menuHospede(){
         System.out.println("\n ______________________________");
         System.out.println("|           HÓSPEDES           |");
         System.out.println("|------------------------------|");
@@ -36,10 +22,9 @@ public class View {
         System.out.println("| 3. Pesquisar hóspede         |");
         System.out.println("| 4. Editar dados              |");
         System.out.println("|______________________________|");
-        return TratamentoDeErros.Erros();
     }
 
-    public int menuQuarto(){
+    public static void menuQuarto(){
         System.out.println("\n ______________________________");
         System.out.println("|            QUARTOS           |");
         System.out.println("|------------------------------|");
@@ -48,10 +33,9 @@ public class View {
         System.out.println("| 3. Pesquisar quarto          |");
         System.out.println("| 4. Editar dados              |");
         System.out.println("|______________________________|");
-        return TratamentoDeErros.Erros();
     }
 
-    public int menuReserva(){
+    public static void menuReserva(){
         System.out.println("\n ______________________________");
         System.out.println("|           RESERVAS           |");
         System.out.println("|------------------------------|");
@@ -61,117 +45,13 @@ public class View {
         System.out.println("| 4. Cancelar reserva          |");
         System.out.println("| 5. Editar dados              |");
         System.out.println("|______________________________|");
-        return TratamentoDeErros.Erros();
     }
 
-    public int cancelarReserva(){
-        System.out.println("\n ____________________________");
-        System.out.println("|      CANCELAR RESERVA      |");
-        System.out.println("|----------------------------|");
-        System.out.println("| Deseja cancelar a reserva? |");
-        System.out.println("| 1. Sim                     |");
-        System.out.println("| 2. Não                     |");
-        System.out.println("|____________________________|");
-        return TratamentoDeErros.Erros();
+    public static void texto(String texto){
+        System.out.println("\n" + texto);
     }
 
-    public void reservaCancelada(){
-        System.out.println("\nReserva cancelada com sucesso.");
-    }
-
-    public void cabecalho(String texto){
-        System.out.println("\n-- " + texto + " --");
-    }
-
-    public static void opcao(){
-        System.out.print("> ");
-    }
-
-    public static void erro(){
-        System.out.print("\nErro: ");
-    }
-
-    public static void textoCadastro(String texto){
-        System.out.print("\n" + texto + ": ");
-    }
-
-    public static void semCadastro(){
-        System.out.println("\nNenhum cadastro disponivel.");
-    }
-
-    public void nEncontrado(){
-        System.out.println("\nNenhum registro encontrado.");
-    }
-
-    public void encontrado(){
-        System.out.println("\nEnter para voltar ao menu");
-        sc.nextLine();
-    }
-
-    public void listarHospede(Hospede hospede){
-        System.out.println("\n" + hospede);
-    }
-
-    public void listarQuarto(Quarto quarto){
-        System.out.println("\n" + quarto);
-    }
-
-    public void listarReserva(Reserva reserva){
-        System.out.println("\n" + reserva);
-    }
-
-    public String pesquisaHospede(){
-        System.out.println("\n ____________________________");
-        System.out.println("| PESQUISAR HÓSPEDE POR NOME |");
-        System.out.println("|----------------------------|");
-        System.out.println("| Insira o nome do hóspede:  |");
-        System.out.println("|____________________________|");
-        System.out.print("> ");
-        return sc.nextLine();
-    }
-
-    public String pesquisaQuarto(){
-        System.out.println("\n ____________________________");
-        System.out.println("| PESQUISAR QUARTO POR TIPO  |");
-        System.out.println("|----------------------------|");
-        System.out.println("| Insira o tipo do quarto:   |");
-        System.out.println("|____________________________|");
-        System.out.print("> ");
-        return sc.nextLine();
-    }
-
-    public String pesquisaReserva(){
-        System.out.println("\n ________________________________");
-        System.out.println("| PESQUISAR RESERVA POR HÓSPEDE  |");
-        System.out.println("|--------------------------------|");
-        System.out.println("| Insira o nome do hóspede   :   |");
-        System.out.println("|________________________________|");
-        System.out.print("> ");
-        return sc.nextLine();
-    }
-
-    public void encerrar(){
-        System.out.println("\nSistema encerrado.");
-    }
-
-    public String lerEntrada(String mensagem) {
-        System.out.print(mensagem);
-        return sc.nextLine();
-    }
-
-    public void editadoComSucesso() {
-        System.out.println("\n✔ Registro editado com sucesso!");
-    }
-
-    public void mensagemEdicao(String mensagem){
-        System.out.println(mensagem);
-    }
-
-    public static void dataInvalida(){
-        System.out.println("\nA data é inválida.");
-    }
-
-    public static void sucessCadastro(){
-        System.out.println("\nCadastro realizado com sucesso!");
+    public static void cabecalho(String texto){
+        System.out.println(texto);
     }
 }

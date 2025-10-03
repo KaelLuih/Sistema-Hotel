@@ -4,13 +4,13 @@ use hotel;
 create table Hospede(
 id int primary key auto_increment,
 nome varchar(100) not null,
-documento varchar(100) not null unique,
+documento varchar(100) not null,
 telefone varchar(20) not null
 );
 
 create table Quarto(
 id int primary key auto_increment,
-numero int not null unique,
+numero int not null,
 tipo varchar(100) not null,
 preco float not null
 );

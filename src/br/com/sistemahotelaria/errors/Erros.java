@@ -5,57 +5,39 @@ import br.com.sistemahotelaria.view.View;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import java.util.Date;
 import java.util.Scanner;
 
-public class TratamentoDeErros {
-    static Scanner input = new Scanner(System.in);
+public class Erros {
+    public static Scanner input = new Scanner(System.in);
 
-    public static int Erros() {
-        int Escolha;
+    public static int entradaInt() {
         while (true) {
-            View.opcao();
+            View.texto("> ");
             String opcaoEscolhida = input.nextLine();
-
             try{
-                Escolha = Integer.parseInt(opcaoEscolhida);
-                return Escolha;
+                return Integer.parseInt(opcaoEscolhida);
             }catch (NumberFormatException erro){
-                View.erro();
+                View.texto("Entrada inválida!");
             }
         }
     }
 
-    public static double preco() {
+    public static double entradaDouble() {
         double Escolha;
         while (true) {
-            View.opcao();
+            View.texto("> ");
             String opcaoEscolhida = input.nextLine();
-
             try{
-                Escolha = Double.parseDouble(opcaoEscolhida);
-                return Escolha;
+                return Double.parseDouble(opcaoEscolhida);
             }catch (NumberFormatException erro){
-                View.erro();
-            }
-        }
-    }
-
-    public static double precoEdit(String preco) {
-        double Escolha;
-        while (true) {
-            try{
-                Escolha = Double.parseDouble(preco);
-                return Escolha;
-            }catch (NumberFormatException erro){
-                View.erro();
+                View.texto("Entrada inválida!");
             }
         }
     }
 
     public static LocalDate dataObrigatoria(){
         while (true){
-            View.opcao();
+            View.texto("> ");
             LocalDate agora = LocalDate.now();
             String dt = input.nextLine();
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -64,10 +46,10 @@ public class TratamentoDeErros {
                 if(data.isAfter(agora) || data.isEqual(agora)){
                     return data;
                 } else {
-                    View.dataInvalida();
+                    View.texto("Data inválida!");
                 }
             } catch (DateTimeParseException e){
-                View.erro();
+                View.texto("Entrada inválida!");
             }
         }
     }
@@ -83,10 +65,10 @@ public class TratamentoDeErros {
                 if(data.isAfter(agora) || data.isEqual(agora)){
                     return data;
                 } else {
-                    View.dataInvalida();
+                    View.texto("Data inválida!");
                 }
             } catch (DateTimeParseException e) {
-                View.erro();
+                View.texto("Entrada inválida!");
             }
         }
     }

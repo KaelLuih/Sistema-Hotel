@@ -29,7 +29,8 @@ public class Reserva {
 
     @Override
     public String toString(){
-        return "\nHospede: " + hospede +
+        return "\nID: " + id +
+                "\nHospede: " + hospede +
                 "\n\nQuarto: " + quarto +
                 "\n\nData de check-in: " + dataEntrada +
                 "\nData de check-out: " + dataSaida +

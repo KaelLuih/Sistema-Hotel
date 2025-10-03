@@ -21,7 +21,8 @@ public class Hospede {
 
     @Override
     public String toString(){
-        return "\nNome: " + nome +
+        return "\nID: " + id +
+                "\nNome: " + nome +
                 "\nDocumento: " + documento +
                 "\nTelefone: " + telefone;
     }

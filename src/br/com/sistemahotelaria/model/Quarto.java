@@ -21,7 +21,8 @@ public class Quarto {
 
     @Override
     public String toString(){
-        return "\nNúmero: " + numero +
+        return "ID: " + id +
+                "\nNúmero: " + numero +
                 "\nTipo: " + tipo +
                 "\nPreço: " + preco;
     }
