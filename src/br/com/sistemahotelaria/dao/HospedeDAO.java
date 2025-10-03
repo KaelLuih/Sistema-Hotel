@@ -47,5 +47,20 @@ public class HospedeDAO {
         }
         return hospedes;
     }
+    public void editarHospede(Hospede hospede)throws SQLException{
+        String query = """
+                UPDATE Material SET nome = ? ,documento = ?, telefone =?
+                WHERE id =? 
+                
+                """;
+        try(Connection conn = Conexao.conectar();
+        PreparedStatement stmt = conn.prepareStatement(query)){
+            stmt.setString(1,hospede.getNome());
+            stmt.setString(2,hospede.getDocumento());
+            stmt.setString(3,hospede.getTelefone());
+            stmt.executeUpdate();
+        }
+
+    }
 
 }
