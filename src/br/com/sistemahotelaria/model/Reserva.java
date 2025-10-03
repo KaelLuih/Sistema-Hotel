@@ -3,27 +3,45 @@ package br.com.sistemahotelaria.model;
 import java.time.LocalDate;
 
 public class Reserva {
+    private int id;
     private Hospede hospede;
     private Quarto quarto;
     private LocalDate dataEntrada;
     private LocalDate dataSaida;
-    private boolean ativa;
+    private Status status;
 
-    public Reserva(Hospede hospede, Quarto quarto, LocalDate dataEntrada, LocalDate dataSaida, boolean ativa){
+    public Reserva(int id, Hospede hospede, Quarto quarto, LocalDate dataEntrada, LocalDate dataSaida, Status status) {
+        this.id = id;
         this.hospede = hospede;
         this.quarto = quarto;
         this.dataEntrada = dataEntrada;
         this.dataSaida = dataSaida;
-        this.ativa = ativa;
+        this.status = status;
     }
 
-    public Reserva() {
-
+    public Reserva(Hospede hospede, Quarto quarto, LocalDate dataEntrada, LocalDate dataSaida, Status status){
+        this.hospede = hospede;
+        this.quarto = quarto;
+        this.dataEntrada = dataEntrada;
+        this.dataSaida = dataSaida;
+        this.status = status;
     }
 
     @Override
     public String toString(){
-        return "\nHospede: " + hospede + "\n\nQuarto: " + quarto + "\n\nData de check-in: " + dataEntrada + "\nData de check-out: " + dataSaida + "\nStatus: " + ativa;
+        return "\nHospede: " + hospede +
+                "\n\nQuarto: " + quarto +
+                "\n\nData de check-in: " + dataEntrada +
+                "\nData de check-out: " + dataSaida +
+                "\nStatus: " + status;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public boolean printDataSaidaInvalida(LocalDate diaEntrada) {
@@ -66,10 +84,11 @@ public class Reserva {
         return true;
     }
 
-    public boolean getAtiva(){ return ativa; }
+    public Status getStatus() {
+        return status;
+    }
 
-    public boolean setAtiva(boolean ativa){
-        this.ativa = ativa;
-        return true;
+    public void setStatus(Status status) {
+        this.status = status;
     }
 }
