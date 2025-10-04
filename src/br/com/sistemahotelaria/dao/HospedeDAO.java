@@ -9,7 +9,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.PropertyResourceBundle;
 
 public class HospedeDAO {
 
@@ -25,14 +24,14 @@ public class HospedeDAO {
             stmt.setString(2,hospede.getDocumento());
             stmt.setString(3,hospede.getTelefone());
             stmt.executeUpdate();
-            }
+        }
     }
 
-    public List<Hospede> listarHospede()throws SQLException{
+    public List<Hospede> listarHospede(){
         List<Hospede> hospedes = new ArrayList<>();
         String query = """
-                SELECT FROM Hospede
-                (id, nome, documento, telefone)                
+                SELECT id, nome, documento, telefone
+                FROM Hospede
                 """;
         try(Connection conn = Conexao.conectar();
         PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -43,7 +42,12 @@ public class HospedeDAO {
                 String nome = rs.getString("nome");
                 String documento = rs.getString("documento");
                 String telefone = rs.getString("telefone");
+
+                var hosp = new Hospede(id, nome, documento, telefone);
+                hospedes.add(hosp);
             }
+        } catch (SQLException e){
+            e.printStackTrace();
         }
         return hospedes;
     }

@@ -12,7 +12,7 @@ public class Erros {
 
     public static int entradaInt() {
         while (true) {
-            View.texto("> ");
+            View.cabecalho("> ");
             String opcaoEscolhida = input.nextLine();
             try{
                 return Integer.parseInt(opcaoEscolhida);
@@ -25,7 +25,7 @@ public class Erros {
     public static double entradaDouble() {
         double Escolha;
         while (true) {
-            View.texto("> ");
+            View.cabecalho("> ");
             String opcaoEscolhida = input.nextLine();
             try{
                 return Double.parseDouble(opcaoEscolhida);
@@ -37,7 +37,7 @@ public class Erros {
 
     public static LocalDate dataObrigatoria(){
         while (true){
-            View.texto("> ");
+            View.cabecalho("> ");
             LocalDate agora = LocalDate.now();
             String dt = input.nextLine();
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -58,6 +58,7 @@ public class Erros {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         while (true) {
             LocalDate agora = LocalDate.now();
+            View.cabecalho("> ");
             String dt = input.nextLine().trim();
             if (dt.isEmpty()) return null;
             try {
