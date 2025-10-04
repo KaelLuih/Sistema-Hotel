@@ -2,6 +2,7 @@ package br.com.sistemahotelaria.service;
 
 import br.com.sistemahotelaria.dao.HospedeDAO;
 import br.com.sistemahotelaria.dao.QuartoDAO;
+import br.com.sistemahotelaria.dao.ReservaDAO;
 import br.com.sistemahotelaria.errors.Erros;
 import br.com.sistemahotelaria.model.Hospede;
 import br.com.sistemahotelaria.model.Quarto;
@@ -18,6 +19,7 @@ import static br.com.sistemahotelaria.errors.Erros.input;
 public class Cadastro {
     public HospedeDAO hospedeDAO = new HospedeDAO();
     public QuartoDAO quartoDAO = new QuartoDAO();
+    public ReservaDAO reservaDAO = new ReservaDAO();
 
     public void hospede(){
         View.texto("\n _________________________");
@@ -118,7 +120,12 @@ public class Cadastro {
                 View.texto("Data de saída:");
                 LocalDate dataSaida = Erros.dataObrigatoria();
                 var reserva = new Reserva(hospede, quarto, dataEntrada, dataSaida, Status.valueOf("ATIVA"));
-
+                try{
+                    reservaDAO.CadastarReserva(reserva);
+                    View.texto("Reserva cadastrada com sucesso!");
+                } catch (SQLException e){
+                    e.printStackTrace();
+                }
             }
         }
     }

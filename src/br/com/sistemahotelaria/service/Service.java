@@ -53,9 +53,9 @@ public class Service {
                     View.menuReserva();
                     opcao = Erros.entradaInt();
                     switch (opcao){
-                        case 1 ->{ //cadastrar
+                        case 1 -> //cadastrar
+                            cd.reserva();
 
-                        }
                         case 2 ->{ //listar
 
                         }
