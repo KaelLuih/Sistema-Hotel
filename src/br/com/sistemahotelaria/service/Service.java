@@ -56,9 +56,9 @@ public class Service {
                         case 1 -> //cadastrar
                             cd.reserva();
 
-                        case 2 ->{ //listar
+                        case 2 -> //listar
+                            psq.listarReserva();
 
-                        }
                         case 3 ->{ //pesquisar
 
                         }

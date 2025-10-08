@@ -30,7 +30,7 @@ public class ReservaDAO {
         }
     }
 
-    public List<Reserva>  listarReservas()throws SQLException{
+    public List<Reserva>  listarReservas(){
         var hospedeDAO = new HospedeDAO();
         var quartoDAO = new QuartoDAO();
         List<Reserva> reservas = new ArrayList<>();
@@ -67,14 +67,14 @@ public class ReservaDAO {
                         quarto = q;
                         break;
                     }
-
                 }
                 LocalDate dataEntrada =rs.getObject("dataEntrada",LocalDate.class);
                 LocalDate dataSaida = rs.getObject("dataSaida",LocalDate.class);
                 Status status = Status.valueOf(rs.getString("status"));
                 var reserva = new Reserva(id,hospede, quarto,dataEntrada,dataSaida,status);
             }
-
+        } catch (SQLException e){
+            e.printStackTrace();
         }
         return reservas;
     }
