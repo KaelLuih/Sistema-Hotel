@@ -1,12 +1,13 @@
 package br.com.sistemahotelaria.dao;
 
+import br.com.sistemahotelaria.model.Hospede;
+import br.com.sistemahotelaria.model.Quarto;
 import br.com.sistemahotelaria.model.Reserva;
+import br.com.sistemahotelaria.model.Status;
 import br.com.sistemahotelaria.util.Conexao;
 
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +31,12 @@ public class ReservaDAO {
     }
 
     public List<Reserva>  listarReservas()throws SQLException{
+        var hospedeDAO = new HospedeDAO();
+        var quartoDAO = new QuartoDAO();
         List<Reserva> reservas = new ArrayList<>();
+        List<Hospede> hospedes = hospedeDAO.listarHospede();
+        List<Quarto> quartos = quartoDAO.listarQuarto();
+
         String query = """
                 SELECT  id,
                         idHospede,
@@ -42,6 +48,32 @@ public class ReservaDAO {
                """;
         try(Connection conn = Conexao.conectar();
             PreparedStatement stmt = conn.prepareStatement(query)){
+            ResultSet rs= stmt.executeQuery();
+
+            Hospede hospede = null;
+            Quarto quarto = null;
+            while (rs.next()){
+                int id = rs.getInt("id");
+                int idHospede = rs.getInt("idHospede");
+                for(Hospede h : hospedes) {
+                    if(h.getId() == idHospede){
+                        hospede = h;
+                        break;
+                    }
+                }
+               int idQuarto = rs.getInt("idQuarto");
+                for(Quarto q: quartos) {
+                    if (q.getId() == idQuarto){
+                        quarto = q;
+                        break;
+                    }
+
+                }
+                LocalDate dataEntrada =rs.getObject("dataEntrada",LocalDate.class);
+                LocalDate dataSaida = rs.getObject("dataSaida",LocalDate.class);
+                Status status = Status.valueOf(rs.getString("status"));
+                var reserva = new Reserva(id,hospede, quarto,dataEntrada,dataSaida,status);
+            }
 
         }
         return reservas;
