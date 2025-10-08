@@ -115,10 +115,18 @@ public class Cadastro {
                         View.texto("Quarto inválido!");
                     }
                 }
+                valido = false;
                 View.texto("Data de entrada:");
                 LocalDate dataEntrada = Erros.dataObrigatoria();
-                View.texto("Data de saída:");
-                LocalDate dataSaida = Erros.dataObrigatoria();
+                LocalDate dataSaida = null;
+                while(!valido){
+                    View.texto("Data de saída:");
+                    dataSaida = Erros.dataObrigatoria();
+                    if(dataSaida.isAfter(dataEntrada)){
+                       valido = true;
+                    }
+                }
+
                 var reserva = new Reserva(hospede, quarto, dataEntrada, dataSaida, Status.valueOf("ATIVA"));
                 try{
                     reservaDAO.CadastarReserva(reserva);

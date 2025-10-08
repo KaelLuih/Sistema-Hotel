@@ -43,10 +43,10 @@ public class Erros {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
             try{
                 LocalDate data = LocalDate.parse(dt, formatter);
-                if(data.isAfter(agora) || data.isEqual(agora)){
-                    return data;
-                } else {
+                if(!data.isAfter(agora) && !data.isEqual(agora)){
                     View.texto("Data inválida!");
+                } else {
+                    return data;
                 }
             } catch (DateTimeParseException e){
                 View.texto("Entrada inválida!");
